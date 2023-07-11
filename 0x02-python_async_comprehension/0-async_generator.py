@@ -8,18 +8,12 @@ that generates random numbers asynchronously.
 
 import asyncio
 import random
-from typing import AsyncGenerator
+from typing import Generator
 
 
-async def async_generator() -> AsyncGenerator[float, None]:
-    """
-    Async Generator: async_generator
-    -------------------------------
-    A coroutine that generates random numbers asynchronously.
-
-    Yields:
-        float: A random number between 0 and 10.
-    """
+async def async_generator() -> Generator[float, None, None]:
+    '''Generates a sequence of 10 numbers.
+    '''
     for _ in range(10):
         await asyncio.sleep(1)
-        yield random.uniform(0, 10)
+        yield random.random() * 10
