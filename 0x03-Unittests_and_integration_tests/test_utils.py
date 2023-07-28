@@ -29,9 +29,11 @@ class TestAccessNestedMap(unittest.TestCase):
         ({}, ("a",), KeyError("a")),
         ({"a": 1}, ("a", "b"), KeyError("b")),
     ])
-    def test_access_nested_map_exception(self, nested_map, path, expected_exception):
+    def test_access_nested_map_exception(
+            self, nested_map, path, expected_exception):
         """
-        Test that the access_nested_map function raises a KeyError for invalid inputs.
+        Test that the access_nested_map function
+        raises a KeyError for invalid inputs.
         """
         with self.assertRaises(KeyError) as context:
             access_nested_map(nested_map, path)
@@ -76,7 +78,8 @@ class TestMemoize(unittest.TestCase):
             def a_property(self):
                 return self.a_method()
 
-        with patch.object(TestClass, 'a_method', return_value=42) as mock_method:
+        with patch.object(
+                TestClass, 'a_method', return_value=42) as mock_method:
             test_obj = TestClass()
             result1 = test_obj.a_property
             result2 = test_obj.a_property
